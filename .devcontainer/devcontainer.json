@@ -1,0 +1,15 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+	"name": "Sagemaker Local Dev",
+	// use the Dockerfile in the current directory
+	// build context of one directory above ('..')
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": ".."
+	},
+	"mounts" :[
+		"source=${env:HOME}${env:USERPROFILE}/.aws,target=/root/.aws,type=bind"
+	]
+
+}
