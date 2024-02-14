@@ -6,7 +6,7 @@ RUN apt update && \
     apt upgrade -y
 
 # unzip / less / groff are required for awscli
-# gcc required for pythong libraries
+# gcc required for python libraries
 RUN apt install curl gcc less groff unzip zsh git make -y
 
 # python libraries
@@ -41,7 +41,8 @@ RUN sh -c "$(curl -L  https://github.com/deluan/zsh-in-docker/releases/download/
 RUN /usr/local/bin/granted completion -s zsh
 
 # Change default SHELL
-RUN chsh -s /usr/bin/zsh && source ~/zshrc
+RUN chsh -s /usr/bin/zsh
+#RUN source ~/zshrc
 
 ENV PYTHONBUFFERED=TRUE
 ENV DEVCONTAINER=true

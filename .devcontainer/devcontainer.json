@@ -1,13 +1,45 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-	"name": "Sagemaker Local Dev",
+	"name": "AWS Local Dev",
 	// use the Dockerfile in the current directory
 	// build context of one directory above ('..')
 	"build": {
 		"dockerfile": "Dockerfile",
 		"context": ".."
 	},
+	"customizations": {
+        "settings": {
+            "python.defaultInterpreterPath": "/usr/local/bin/python",
+            "python.formatting.provider":"black",
+            "python.formatting.blackPath":"/usr/local/bin/black",
+            "python.linting.enabled": true,
+            "python.linting.pylintEnabled": true,
+            "python.linting.mypyEnabled":true,
+            "editor.insertSpaces": true,
+            "editor.tabSize": 4,
+            "editor.detectIndentation":false,
+            "editor.formatOnSave":false,
+            "[python]": {
+                "editor.formatOnSave": true
+            },
+            "python.testing.pytestPath":"/usr/local/bin/pytest",
+            "python.testing.pytestEnabled":true
+        },
+        "shutdownAction": "none",
+        "vscode": {
+            "extensions": [
+                // Docker Supporting Extensions
+                "ms-vscode-remote.remote-containers",
+                // Python Extensions
+                "ms-python.python",
+                "ms-python.black-formatter",
+                "ms-toolsai.jupyter",
+                // Github Actions
+                "github.vscode-github-actions"
+            ]
+        }
+    },
 	"mounts" :[
 		"source=${env:HOME}${env:USERPROFILE}/.aws,target=/root/.aws,type=bind"
 	]

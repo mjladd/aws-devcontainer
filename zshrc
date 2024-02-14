@@ -116,3 +116,4 @@ function aws-env {
 function aws-unset {
     unset AWS_PROFILE
 }
+
