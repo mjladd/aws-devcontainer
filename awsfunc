@@ -1,0 +1,15 @@
+# aws-env function
+function aws-env {
+    unset AWS_PROFILE
+    cat /dev/null > ~/.aws/credentials
+    assume --export
+    # remove start/end brackets from credentials value
+    output=$(head -1 ~/.aws/credentials | awk  '{print substr($0,2,length($0)-2)}')
+    export AWS_PROFILE=$output
+}
+
+# unset AWS_PROFILE
+function aws-unset {
+    unset AWS_PROFILE
+}
+

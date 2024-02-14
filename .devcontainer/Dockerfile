@@ -1,6 +1,6 @@
 FROM python:3.11-slim-bookworm
 
-COPY  ./zshrc /home/$USERNAME/.zshrc
+COPY ./awsfunc /root/.awsfunc
 
 RUN apt update && \
     apt upgrade -y
@@ -35,14 +35,19 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv
 # with robbyrussell" and git/aws plugins
 RUN sh -c "$(curl -L  https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- \
     -t robbyrussell \
-    -p git -p aws
+    -p git -p aws \
+    -a 'alias sl=ls' \
+    -a "alias ls='ls -p'" \
+    -a 'unsetopt AUTO_REMOVE_SLASH' \
+    -a 'source /root/.awsfunc' \
+    -a 'export PYTHONDONTWRITEBYTECODE=1'
+
 
 # setup granted / assume autocompletion
 RUN /usr/local/bin/granted completion -s zsh
 
 # Change default SHELL
 RUN chsh -s /usr/bin/zsh
-#RUN source ~/zshrc
 
 ENV PYTHONBUFFERED=TRUE
 ENV DEVCONTAINER=true
