@@ -2,6 +2,11 @@
 
 Requires VSCode Dev Containers extension and Docker Desktop.
 
+## TODO
+
+- try postCreate
+  `postCreateCommand": "pip install --upgrade pip && pip install jupyter"`
+
 ## Why
 
 Provide a containerized python environment for developing python/sagemaker

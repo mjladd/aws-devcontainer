@@ -31,6 +31,12 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv
   && ./aws/install \
   && rm awscliv2.zip
 
+# aws cdk
+RUN apt install nodejs npm --no-install-recommends -y
+RUN npm update -g \
+  && npm  install -g aws-cdk \
+  && cdk --version
+
 ## install oh-my-zsh
 # with robbyrussell" and git/aws plugins
 RUN sh -c "$(curl -L  https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- \
