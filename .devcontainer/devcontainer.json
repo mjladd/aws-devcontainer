@@ -41,7 +41,8 @@
         }
     },
 	"mounts" :[
-		"source=${env:HOME}${env:USERPROFILE}/.aws,target=/root/.aws,type=bind"
+		"source=${env:HOME}${env:USERPROFILE}/.aws,target=/root/.aws,type=bind",
+		"source=${localWorkspaceFolder}/app,target=/root/app,type=bind"
 	]
 
 }
